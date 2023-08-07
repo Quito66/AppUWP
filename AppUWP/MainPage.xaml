@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Consultar" Height="128" Width="433" HorizontalAlignment="Center" Click="Button_Click"/>
+        <Button Content="Ver resultados" Height="128" Width="433" HorizontalAlignment="Center" Click="Button_Click"/>
 
     </Grid>
 </Page>
