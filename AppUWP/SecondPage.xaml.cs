@@ -28,25 +28,22 @@ namespace AppUWP
     /// </summary>
     public sealed partial class SecondPage : Page
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public Item Item { get; set; }
         public SecondPage()
         {
             this.InitializeComponent();
-            Items = new ObservableCollection<Item>();
-            Task<bool> res = LoadItemsApi(); // Cargar elementos en la colección
-            if (res.Result)
-            {
-                itemListView.ItemsSource = Items;
-            }
-            else
-            {
-                myTextBox.Visibility = Visibility.Visible;
-            }
+            this.Loaded += Page_Loaded;
         }
-        private async Task<bool> LoadItemsApi()
+        private async void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            string url = "https://jsonplaceholder.typicode.com/users"; // URL de la API a la que deseas realizar la solicitud
-            ObservableCollection<Item> personList = new ObservableCollection<Item>();
+            Item = new Item();
+            await LoadItemsApi(); // Cargar elementos en la colección
+            itemListView.Items.Add(Item);
+        }
+        public async Task LoadItemsApi()
+        {
+            string url = "https://api.chucknorris.io/jokes/random"; // URL de la API a la que deseas realizar la solicitud
+            Item personList = new Item();
             using (HttpClient client = new HttpClient())
             {
 
@@ -57,18 +54,17 @@ namespace AppUWP
                     if (response.IsSuccessStatusCode)
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        personList = JsonConvert.DeserializeObject<ObservableCollection<Item>>(responseBody);
-                        this.Items= personList;
+                        personList = JsonConvert.DeserializeObject<Item>(responseBody);
+                        this.Item= personList;
                     }
                     
                 }
                 catch (Exception ex)
                 {
                     myTextBox.Text = "Error: " + ex.Message;
-                    return false;
+                    myTextBox.Visibility= Visibility.Visible;
                 }
             }
-            return true;
         }
     }
 }

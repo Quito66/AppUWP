@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="Phone" />
-    <RootPropertyPathName Name="Email" />
-    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="Value" />
+    <RootPropertyPathName Name="Url" />
+    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="Icon_url" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application" />
