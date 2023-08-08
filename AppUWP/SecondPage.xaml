@@ -14,8 +14,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Nombre}" />
-                        <TextBlock Text="{Binding Cantidad}" />
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Email}" />
+                        <TextBlock Text="{Binding Phone}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
